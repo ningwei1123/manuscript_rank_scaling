@@ -1,0 +1,20 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Large raw observational data (retrieved by download_real_data.py)
+*.nc
+*.nc.gz
+
+# Backup files left by the figure-DPI correction
+*.bak
+
+# Editor
+.vscode/
+.idea/

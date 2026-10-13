@@ -1,0 +1,15 @@
+# Python dependencies for the code in this repository.
+# Tested with Python 3.11 on Windows. No GPU is required.
+
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+python-docx>=1.1
+Pillow>=10.0
+
+# Used only by code/experiments/download_real_data.py to read the
+# NetCDF-3 sea-surface temperature files:
+#   scipy.io.netcdf_file  (already provided by scipy)
+
+# Used only by the figure-data preparation step to resolve reference DOIs:
+#   the standard library urllib.request against https://api.crossref.org

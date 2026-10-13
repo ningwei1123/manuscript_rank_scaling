@@ -1,0 +1,106 @@
+# Figure 1c: required rank versus accuracy for an exact exponential spectrum,
+# lambda_k = exp(-alpha k), k = 0..39, state dimension n = 40.
+#
+# Both columns answer the same question, r*(eps) = min{ r : sum_{k>=r} lambda_k^2
+# <= eps^2 sum_k lambda_k^2 }, so that they are directly comparable:
+#
+# rank_exact   : enumeration over the finite spectrum (this is the plotted curve).
+# rank_formula : solving the same criterion with the tail replaced by an infinite
+#                geometric series, which is Eq. (3) of the manuscript, then rounding
+#                up. The replacement overestimates the tail by
+#                1 - exp(-2 alpha (n - r)), so the formula asks for more modes than
+#                are needed. The excess is negligible when alpha*n is large and
+#                substantial when alpha*n is small, which is the whole point of the
+#                panel: the saturated branch is an artifact of that replacement
+#                rather than a third spectral class.
+series	epsilon	rank_exact	rank_formula
+alpha*n=2 (saturating)	0.31622777	22	24
+alpha*n=2 (saturating)	0.26330223	25	27
+alpha*n=2 (saturating)	0.2192346	28	31
+alpha*n=2 (saturating)	0.18254235	30	35
+alpha*n=2 (saturating)	0.15199111	32	38
+alpha*n=2 (saturating)	0.12655308	34	40
+alpha*n=2 (saturating)	0.1053725	36	40
+alpha*n=2 (saturating)	0.087736806	37	40
+alpha*n=2 (saturating)	0.073052715	38	40
+alpha*n=2 (saturating)	0.060826231	39	40
+alpha*n=2 (saturating)	0.050646035	39	40
+alpha*n=2 (saturating)	0.04216965	40	40
+alpha*n=2 (saturating)	0.035111917	40	40
+alpha*n=2 (saturating)	0.029235403	40	40
+alpha*n=2 (saturating)	0.024342414	40	40
+alpha*n=2 (saturating)	0.02026834	40	40
+alpha*n=2 (saturating)	0.016876125	40	40
+alpha*n=2 (saturating)	0.014051648	40	40
+alpha*n=2 (saturating)	0.011699891	40	40
+alpha*n=2 (saturating)	0.0097417362	40	40
+alpha*n=2 (saturating)	0.0081113083	40	40
+alpha*n=2 (saturating)	0.0067537574	40	40
+alpha*n=2 (saturating)	0.0056234133	40	40
+alpha*n=2 (saturating)	0.0046822494	40	40
+alpha*n=2 (saturating)	0.0038986037	40	40
+alpha*n=2 (saturating)	0.003246113	40	40
+alpha*n=2 (saturating)	0.0027028266	40	40
+alpha*n=2 (saturating)	0.0022504674	40	40
+alpha*n=2 (saturating)	0.0018738174	40	40
+alpha*n=2 (saturating)	0.0015602055	40	40
+alpha*n=2 (saturating)	0.0012990814	40	40
+alpha*n=2 (saturating)	0.0010816603	40	40
+alpha*n=2 (saturating)	0.00090062802	40	40
+alpha*n=2 (saturating)	0.00074989421	40	40
+alpha*n=2 (saturating)	0.000624388	40	40
+alpha*n=2 (saturating)	0.00051988716	40	40
+alpha*n=2 (saturating)	0.00043287613	40	40
+alpha*n=2 (saturating)	0.00036042772	40	40
+alpha*n=2 (saturating)	0.00030010465	40	40
+alpha*n=2 (saturating)	0.00024987757	40	40
+alpha*n=2 (saturating)	0.00020805675	40	40
+alpha*n=2 (saturating)	0.00017323529	40	40
+alpha*n=2 (saturating)	0.00014424173	40	40
+alpha*n=2 (saturating)	0.00012010068	40	40
+alpha*n=2 (saturating)	0.0001	40	40
+alpha*n=20 (logarithmic)	0.31622777	3	3
+alpha*n=20 (logarithmic)	0.26330223	3	3
+alpha*n=20 (logarithmic)	0.2192346	4	4
+alpha*n=20 (logarithmic)	0.18254235	4	4
+alpha*n=20 (logarithmic)	0.15199111	4	4
+alpha*n=20 (logarithmic)	0.12655308	5	5
+alpha*n=20 (logarithmic)	0.1053725	5	5
+alpha*n=20 (logarithmic)	0.087736806	5	5
+alpha*n=20 (logarithmic)	0.073052715	6	6
+alpha*n=20 (logarithmic)	0.060826231	6	6
+alpha*n=20 (logarithmic)	0.050646035	6	6
+alpha*n=20 (logarithmic)	0.04216965	7	7
+alpha*n=20 (logarithmic)	0.035111917	7	7
+alpha*n=20 (logarithmic)	0.029235403	8	8
+alpha*n=20 (logarithmic)	0.024342414	8	8
+alpha*n=20 (logarithmic)	0.02026834	8	8
+alpha*n=20 (logarithmic)	0.016876125	9	9
+alpha*n=20 (logarithmic)	0.014051648	9	9
+alpha*n=20 (logarithmic)	0.011699891	9	9
+alpha*n=20 (logarithmic)	0.0097417362	10	10
+alpha*n=20 (logarithmic)	0.0081113083	10	10
+alpha*n=20 (logarithmic)	0.0067537574	10	10
+alpha*n=20 (logarithmic)	0.0056234133	11	11
+alpha*n=20 (logarithmic)	0.0046822494	11	11
+alpha*n=20 (logarithmic)	0.0038986037	12	12
+alpha*n=20 (logarithmic)	0.003246113	12	12
+alpha*n=20 (logarithmic)	0.0027028266	12	12
+alpha*n=20 (logarithmic)	0.0022504674	13	13
+alpha*n=20 (logarithmic)	0.0018738174	13	13
+alpha*n=20 (logarithmic)	0.0015602055	13	13
+alpha*n=20 (logarithmic)	0.0012990814	14	14
+alpha*n=20 (logarithmic)	0.0010816603	14	14
+alpha*n=20 (logarithmic)	0.00090062802	15	15
+alpha*n=20 (logarithmic)	0.00074989421	15	15
+alpha*n=20 (logarithmic)	0.000624388	15	15
+alpha*n=20 (logarithmic)	0.00051988716	16	16
+alpha*n=20 (logarithmic)	0.00043287613	16	16
+alpha*n=20 (logarithmic)	0.00036042772	16	16
+alpha*n=20 (logarithmic)	0.00030010465	17	17
+alpha*n=20 (logarithmic)	0.00024987757	17	17
+alpha*n=20 (logarithmic)	0.00020805675	17	17
+alpha*n=20 (logarithmic)	0.00017323529	18	18
+alpha*n=20 (logarithmic)	0.00014424173	18	18
+alpha*n=20 (logarithmic)	0.00012010068	19	19
+alpha*n=20 (logarithmic)	0.0001	19	19

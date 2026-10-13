@@ -1,0 +1,145 @@
+[
+  {
+    "file": "figure1ab_spectra.txt",
+    "columns": [
+      "index_k",
+      "sigma_exponential",
+      "sigma_algebraic"
+    ],
+    "data_rows": 40,
+    "description": "Figure 1a,b: illustrative exponential and algebraic spectra (epsilon = 0.01 marked)."
+  },
+  {
+    "file": "figure1c_rank_vs_accuracy.txt",
+    "columns": [
+      "series",
+      "epsilon",
+      "rank_exact",
+      "rank_formula"
+    ],
+    "data_rows": 90,
+    "description": "Figure 1c: required rank versus accuracy for an exact exponential spectrum,"
+  },
+  {
+    "file": "figure2_ks_rank_accuracy.txt",
+    "columns": [
+      "epsilon",
+      "rank_measured",
+      "rank_log_fit",
+      "rank_power_fit"
+    ],
+    "data_rows": 60,
+    "description": "Figure 2: Kuramoto-Sivashinsky measured rank-accuracy curve, computed from the snapshot covariance spectrum. Fits: log form slope = 1.1672 (R2 = 0.9775); power-law R2 = 0.9080."
+  },
+  {
+    "file": "figure3_dky_lyapunov.txt",
+    "columns": [
+      "N",
+      "D_Kaplan_Yorke",
+      "d_eff",
+      "ratio_d_eff_over_D_KY"
+    ],
+    "data_rows": 5,
+    "description": "Figure 3: effective dimension against the Kaplan-Yorke dimension for Lorenz-96."
+  },
+  {
+    "file": "figure3_dky_vs_deff.txt",
+    "columns": [
+      "system",
+      "n",
+      "d_eff",
+      "d_eff_over_n"
+    ],
+    "data_rows": 9,
+    "description": "Figure 3: effective dimension of the covariance spectrum against the state or mode count."
+  },
+  {
+    "file": "figure5_controlled_exponents.txt",
+    "columns": [
+      "intrinsic_dim_D",
+      "beta",
+      "prefactor_A",
+      "predicted_gamma",
+      "measured_gamma",
+      "measured_sd",
+      "n_seeds"
+    ],
+    "data_rows": 3,
+    "description": "Figure 5 / Figure 3: predicted and measured error-width exponents for the controlled operators."
+  },
+  {
+    "file": "figure6_estimator_validation.txt",
+    "columns": [
+      "M_snapshots",
+      "alpha_fitted",
+      "d_eff_fitted",
+      "fit_R2",
+      "r_data",
+      "truth_eps0.01",
+      "pred_population_eps0.01",
+      "pred_finite_eps0.01",
+      "truth_eps0.001",
+      "pred_population_eps0.001",
+      "pred_finite_eps0.001"
+    ],
+    "data_rows": 8,
+    "description": "Figure 4 (estimator validation): fitted parameters and rank predictions against the number of snapshots."
+  },
+  {
+    "file": "figure6_l96_width_scan.txt",
+    "columns": [
+      "width_W",
+      "test_MSE"
+    ],
+    "data_rows": 8,
+    "description": "Lorenz-96 width scan (MSE averaged over seeds)."
+  },
+  {
+    "file": "figures1_ks_spectrum.txt",
+    "columns": [
+      "index_k",
+      "sigma_k",
+      "sigma_k_over_sigma_1"
+    ],
+    "data_rows": 32,
+    "description": "Singular value spectrum of the Kuramoto-Sivashinsky snapshot covariance (L=22, N=32)."
+  },
+  {
+    "file": "figures1_l96_rank_accuracy.txt",
+    "columns": [
+      "epsilon",
+      "rank_measured"
+    ],
+    "data_rows": 60,
+    "description": "Lorenz-96 (N = 40) rank-accuracy curve, showing saturation at r = n = 40."
+  },
+  {
+    "file": "figures1_l96_spectrum.txt",
+    "columns": [
+      "index_k",
+      "sigma_k",
+      "sigma_k_over_sigma_1",
+      "cumulative_energy_fraction"
+    ],
+    "data_rows": 40,
+    "description": "Lorenz-96 (N = 40) snapshot covariance singular values, and the rank-accuracy curve in the companion file."
+  },
+  {
+    "file": "figures3_ks_width_tau0.125.txt",
+    "columns": [
+      "width_W",
+      "test_MSE"
+    ],
+    "data_rows": 8,
+    "description": "Kuramoto-Sivashinsky width scan at tau = 0.125."
+  },
+  {
+    "file": "figures3_ks_width_tau0.5.txt",
+    "columns": [
+      "width_W",
+      "test_MSE"
+    ],
+    "data_rows": 8,
+    "description": "Kuramoto-Sivashinsky width scan at tau = 0.5."
+  }
+]

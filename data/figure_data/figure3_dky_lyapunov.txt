@@ -1,0 +1,7 @@
+# Figure 3: effective dimension against the Kaplan-Yorke dimension for Lorenz-96.
+N	D_Kaplan_Yorke	d_eff	ratio_d_eff_over_D_KY
+6	3.98484	4.93113	1.23747
+10	6.5939	7.19949	1.09184
+20	13.3167	14.7258	1.10582
+40	26.886	29.5562	1.09932
+80	54.0054	58.9632	1.0918

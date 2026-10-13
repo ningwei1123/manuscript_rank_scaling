@@ -1,0 +1,19 @@
+{
+  "system": "Kuramoto-Sivashinsky, L=22, N=32, 100000 snapshots (RK4 field)",
+  "norm_convention": "relative truncation error in the Frobenius norm",
+  "fit_window": "ranks 1..20 (saturated tail excluded; only 32 modes exist)",
+  "eps_range": [
+    0.1,
+    0.00036251170499885317
+  ],
+  "log_slope": 2.0654213624891486,
+  "log_intercept": 4.17022285443338,
+  "log_R2": 0.9891818926660634,
+  "power_exponent": 0.14723093641129587,
+  "power_R2": 0.9612217020140997,
+  "predicted_1_over_alpha": 1.406192644425351,
+  "predicted_1_over_2alpha": 0.7030963222126755,
+  "alpha": 0.711140115804443,
+  "relative_deviation_log_slope_pct": 46.88039869055036,
+  "verdict": "logarithmic form wins on R2; coefficient deviates from 1/alpha by 47% and is window-dependent"
+}

@@ -1,0 +1,11 @@
+# Figure 3: effective dimension of the covariance spectrum against the state or mode count.
+system	n	d_eff	d_eff_over_n
+L96_N6	6	4.93113	0.821856
+L96_N10	10	7.19949	0.719949
+L96_N20	20	14.7258	0.73629
+L96_N40	40	29.5562	0.738905
+L96_N80	80	58.9632	0.73704
+CML_L32	32	2.03053	0.0634541
+CML_L64	64	46.4105	0.725164
+CML_L128	128	1.07657	0.00841066
+CML_L256	256	249.7	0.975391

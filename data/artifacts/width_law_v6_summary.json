@@ -1,0 +1,145 @@
+{
+  "lorenz96_width_law": {
+    "source": "real_l96_width_v6.json",
+    "task": "N=40 F=8 flow map u(t)->u(t+tau), tau=10 steps of dt=0.01",
+    "architecture": "MLP on (state, 8 random Fourier features of coordinate), 3 hidden layers, output bias",
+    "widths": [
+      16,
+      24,
+      32,
+      48,
+      64,
+      96,
+      128,
+      256
+    ],
+    "mse_mean": [
+      0.6687764128049215,
+      0.4544154604276021,
+      0.43192999561627704,
+      0.2944641460975011,
+      0.19450019299983978,
+      0.12303812801837921,
+      0.08271483828624089,
+      0.06857007121046384
+    ],
+    "baselines": {
+      "trivial": 1.0000747442245483,
+      "persistence": 0.24525906145572662,
+      "ridge_linear": 0.1630242019891739
+    },
+    "beats_persistence_at_widths": [
+      64,
+      96,
+      128,
+      256
+    ],
+    "beats_ridge_at_widths": [
+      96,
+      128,
+      256
+    ],
+    "measured_gamma": 0.37162666390848054,
+    "measured_gamma_R2": 0.8821647310733389,
+    "W_star": {
+      "0.4": 76,
+      "0.3": 120,
+      "0.25": null,
+      "0.2": null,
+      "0.15": null,
+      "0.12": null,
+      "0.1": null
+    },
+    "predicted_1_over_beta_from_flat_spectrum": 2.099145964319709,
+    "spectral_beta_upper_half": 0.4763842138648419,
+    "spectral_beta_R2": 0.9742159671674977,
+    "verdict": "a genuine power-law width response (gamma = 0.372, R2 = 0.882) that beats persistence and ridge; the measured gamma is about 5.6x smaller than 1/beta from the near-flat spectrum, so the exponent is not reproduced"
+  },
+  "ks_width_scan_tau0p5": {
+    "source": "ks_width_v6_tau2000.json",
+    "tau": 0.5,
+    "tau_steps": 2000,
+    "architecture": "MLP 32->W->W->W->32, tanh",
+    "widths": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "mse_mean": [
+      0.721593588590622,
+      0.4464671164751053,
+      0.201036736369133,
+      0.2174069657921791,
+      0.2082289382815361,
+      0.14959946274757385,
+      0.15641048550605774,
+      0.1714296117424965
+    ],
+    "baselines_declared_in_script": {
+      "trivial": 0.6823612637265744,
+      "persistence": 0.13586578765244114,
+      "ridge_linear": 2.3328287907291716
+    },
+    "fair_ridge_test_mse": 1.561719262797132,
+    "fair_ridge_lambda": 1.0,
+    "beats_persistence": false,
+    "beats_ridge": true,
+    "loglaw_slope": 0.004612596383171726,
+    "loglaw_R2": 0.4801829532451276,
+    "W_star": {
+      "0.5": 21,
+      "0.45": 24,
+      "0.4": 60,
+      "0.35": null,
+      "0.3": null,
+      "0.25": null,
+      "0.2": null
+    },
+    "verdict": "the network clearly beats a properly cross-validated ridge map and saturates near W~64; it does not beat persistence at this horizon, and the width response does not follow a clean power law"
+  },
+  "ks_width_scan_tau0p125": {
+    "source": "ks_width_v6.json",
+    "tau": 0.125,
+    "widths": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "mse_mean": [
+      0.5430779904127121,
+      0.2425607144832611,
+      0.2016116827726364,
+      0.1177610456943512,
+      0.10749039053916931,
+      0.07353553920984268,
+      0.06305643916130066,
+      0.06931255385279655
+    ],
+    "baselines": {
+      "trivial": 0.6465712767094806,
+      "persistence": 0.006684229612794848,
+      "ridge_linear": 0.21642579390724154
+    },
+    "loglaw_slope": 0.0073803077787069635,
+    "loglaw_R2": 0.6855372443398886,
+    "W_star": {
+      "0.45": 24,
+      "0.4": 27,
+      "0.35": 31,
+      "0.3": 55,
+      "0.25": null,
+      "0.2": null
+    },
+    "verdict": "shorter horizon: saturates at W~24-64 and persistence is essentially unbeatable; kept only to show the horizon dependence"
+  }
+}
