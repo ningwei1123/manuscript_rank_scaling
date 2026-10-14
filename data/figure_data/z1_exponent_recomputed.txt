@@ -1,0 +1,21 @@
+# Source artifact: z1_exponent_recomputed.json
+# Long format: field<TAB>value. Array-valued fields are JSON-encoded.
+field	value
+rows.3.beta	1.0
+rows.3.slope	0.6718550565381973
+rows.3.R2	0.9949009066086874
+rows.3.gamma_pred	0.5
+rows.3.ratio	1.3437101130763947
+rows.4.beta	0.75
+rows.4.slope	0.8115904986263586
+rows.4.R2	0.9220470190947517
+rows.4.gamma_pred	0.25
+rows.4.ratio	3.2463619945054343
+rows.5.beta	0.6
+rows.5.slope	0.8677860711186208
+rows.5.R2	0.8055740409821809
+rows.5.gamma_pred	0.09999999999999998
+rows.5.ratio	8.67786071118621
+prefactors.1.0	0.8892127186443785
+prefactors.0.75	0.6861149662353544
+prefactors.0.6	0.5594306677456882

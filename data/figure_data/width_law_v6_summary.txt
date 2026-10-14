@@ -1,0 +1,65 @@
+# Source artifact: width_law_v6_summary.json
+# Long format: field<TAB>value. Array-valued fields are JSON-encoded.
+field	value
+lorenz96_width_law.source	real_l96_width_v6.json
+lorenz96_width_law.task	N=40 F=8 flow map u(t)->u(t+tau), tau=10 steps of dt=0.01
+lorenz96_width_law.architecture	MLP on (state, 8 random Fourier features of coordinate), 3 hidden layers, output bias
+lorenz96_width_law.widths	[16, 24, 32, 48, 64, 96, 128, 256]
+lorenz96_width_law.mse_mean	[0.6687764128049215, 0.4544154604276021, 0.43192999561627704, 0.2944641460975011, 0.19450019299983978, 0.12303812801837921, 0.08271483828624089, 0.06857007121046384]
+lorenz96_width_law.baselines.trivial	1.0000747442245483
+lorenz96_width_law.baselines.persistence	0.24525906145572662
+lorenz96_width_law.baselines.ridge_linear	0.1630242019891739
+lorenz96_width_law.beats_persistence_at_widths	[64, 96, 128, 256]
+lorenz96_width_law.beats_ridge_at_widths	[96, 128, 256]
+lorenz96_width_law.measured_gamma	0.37162666390848054
+lorenz96_width_law.measured_gamma_R2	0.8821647310733389
+lorenz96_width_law.W_star.0.4	76
+lorenz96_width_law.W_star.0.3	120
+lorenz96_width_law.W_star.0.25	None
+lorenz96_width_law.W_star.0.2	None
+lorenz96_width_law.W_star.0.15	None
+lorenz96_width_law.W_star.0.12	None
+lorenz96_width_law.W_star.0.1	None
+lorenz96_width_law.predicted_1_over_beta_from_flat_spectrum	2.099145964319709
+lorenz96_width_law.spectral_beta_upper_half	0.4763842138648419
+lorenz96_width_law.spectral_beta_R2	0.9742159671674977
+lorenz96_width_law.verdict	a genuine power-law width response (gamma = 0.372, R2 = 0.882) that beats persistence and ridge; the measured gamma is about 5.6x smaller than 1/beta from the near-flat spectrum, so the exponent is not reproduced
+ks_width_scan_tau0p5.source	ks_width_v6_tau2000.json
+ks_width_scan_tau0p5.tau	0.5
+ks_width_scan_tau0p5.tau_steps	2000
+ks_width_scan_tau0p5.architecture	MLP 32->W->W->W->32, tanh
+ks_width_scan_tau0p5.widths	[8, 16, 24, 32, 48, 64, 96, 128]
+ks_width_scan_tau0p5.mse_mean	[0.721593588590622, 0.4464671164751053, 0.201036736369133, 0.2174069657921791, 0.2082289382815361, 0.14959946274757385, 0.15641048550605774, 0.1714296117424965]
+ks_width_scan_tau0p5.baselines_declared_in_script.trivial	0.6823612637265744
+ks_width_scan_tau0p5.baselines_declared_in_script.persistence	0.13586578765244114
+ks_width_scan_tau0p5.baselines_declared_in_script.ridge_linear	2.3328287907291716
+ks_width_scan_tau0p5.fair_ridge_test_mse	1.561719262797132
+ks_width_scan_tau0p5.fair_ridge_lambda	1.0
+ks_width_scan_tau0p5.beats_persistence	False
+ks_width_scan_tau0p5.beats_ridge	True
+ks_width_scan_tau0p5.loglaw_slope	0.004612596383171726
+ks_width_scan_tau0p5.loglaw_R2	0.4801829532451276
+ks_width_scan_tau0p5.W_star.0.5	21
+ks_width_scan_tau0p5.W_star.0.45	24
+ks_width_scan_tau0p5.W_star.0.4	60
+ks_width_scan_tau0p5.W_star.0.35	None
+ks_width_scan_tau0p5.W_star.0.3	None
+ks_width_scan_tau0p5.W_star.0.25	None
+ks_width_scan_tau0p5.W_star.0.2	None
+ks_width_scan_tau0p5.verdict	the network clearly beats a properly cross-validated ridge map and saturates near W~64; it does not beat persistence at this horizon, and the width response does not follow a clean power law
+ks_width_scan_tau0p125.source	ks_width_v6.json
+ks_width_scan_tau0p125.tau	0.125
+ks_width_scan_tau0p125.widths	[8, 16, 24, 32, 48, 64, 96, 128]
+ks_width_scan_tau0p125.mse_mean	[0.5430779904127121, 0.2425607144832611, 0.2016116827726364, 0.1177610456943512, 0.10749039053916931, 0.07353553920984268, 0.06305643916130066, 0.06931255385279655]
+ks_width_scan_tau0p125.baselines.trivial	0.6465712767094806
+ks_width_scan_tau0p125.baselines.persistence	0.006684229612794848
+ks_width_scan_tau0p125.baselines.ridge_linear	0.21642579390724154
+ks_width_scan_tau0p125.loglaw_slope	0.0073803077787069635
+ks_width_scan_tau0p125.loglaw_R2	0.6855372443398886
+ks_width_scan_tau0p125.W_star.0.45	24
+ks_width_scan_tau0p125.W_star.0.4	27
+ks_width_scan_tau0p125.W_star.0.35	31
+ks_width_scan_tau0p125.W_star.0.3	55
+ks_width_scan_tau0p125.W_star.0.25	None
+ks_width_scan_tau0p125.W_star.0.2	None
+ks_width_scan_tau0p125.verdict	shorter horizon: saturates at W~24-64 and persistence is essentially unbeatable; kept only to show the horizon dependence

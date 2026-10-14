@@ -1,25 +1,9 @@
 # The covariance spectrum, not the Koopman spectrum, sets the rank of data-driven models
 
-Code, figures and figure data for a paper submitted to the *Journal of Computational
-Physics*. The repository is self-contained: every script resolves its inputs relative to
-the repository root, so it can be cloned anywhere and run.
+Code and figure data for a paper submitted to the *Journal of Computational Physics*.
 
-## Version correspondence
-
-The repository is archived on Zenodo and tagged to match the submitted manuscript. The
-manuscript Data-availability statement cites the version below that reproduces *every*
-quantitative claim in the text.
-
-| Repository tag | Manuscript | Zenodo DOI | What it archives |
-|---|---|---|---|
-| `v1.0.0` | JCP submission (first deposit) | [10.5281/zenodo.23334340](https://doi.org/10.5281/zenodo.23334340) | code, data artifacts and figures at the v1.0.0 snapshot |
-| `v1.1.0` | JCP manuscript **v48** (all numbers) | [10.5281/zenodo.23354867](https://doi.org/10.5281/zenodo.23354867) | the code, data artifacts and figures that regenerate every number in v48 |
-
-`v1.1.0` is the version referenced by the manuscript. Cloning the tag and running
-`python code/build/make_manuscript_final_jcp.py` rebuilds the manuscript from the archived
-artifacts; every number is read from `data/artifacts/`, nothing is typed by hand. The
-concept DOI [10.5281/zenodo.23334339](https://doi.org/10.5281/zenodo.23334339) always
-resolves to the latest published version.
+- Code repository: <https://github.com/ningwei1123/rank-scaling-diagnostic-v2>
+- Archived release: <https://doi.org/10.5281/zenodo.23354867>
 
 ## What the paper claims
 
@@ -69,32 +53,18 @@ manuscript_rank_scaling/
     LICENSE                       MIT (code only)
     requirements.txt
     code/
-        experiments/    75 scripts  the analysis that produces every artifact
+        experiments/    75 scripts  the analysis that produces the results
         figures/         6 scripts  the plotting code for the ten figures
-        build/          13 scripts  the manuscript generator and its checkers
     data/
-        artifacts/      36 files   every JSON/NPZ the generator and the plot code read
-        figure_data/    18 files   one plain-text file per figure panel
+        figure_data/    29 files   every figure panel as plain text (tab-separated)
     figures/            10 PNGs    the figures as they appear in the manuscript
 ```
-
-Every path inside the scripts is derived from the repository root:
-
-```python
-REPO    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-ART     = os.path.join(REPO, "data", "artifacts")
-FIGDIR  = os.path.join(REPO, "figures")
-FDATA   = os.path.join(REPO, "data", "figure_data")
-```
-
-`data/artifacts/path2_ks_turb.npz` is the raw Kuramoto-Sivashinsky velocity field
-(24 MB) from which Figure 2 is computed; it is the only large file in the repository.
 
 ## Figure data files
 
 Each file under `data/figure_data/` is tab-separated, carries a header line, and begins
 with one or more `#` comment lines stating what the numbers are and, where relevant, the
-fitting window they were computed over.
+fitting window they were computed over. They can be read with any tool.
 
 | File | Figure | Content |
 |---|---|---|
@@ -113,24 +83,42 @@ fitting window they were computed over.
 | `figure6_l96_width_scan.txt` | 6 | Lorenz-96 width scan, test MSE against width |
 | `figures3_ks_width_tau0.5.txt` | — | Kuramoto-Sivashinsky width scan at tau = 0.5 (negative result, archived) |
 | `figures3_ks_width_tau0.125.txt` | — | Kuramoto-Sivashinsky width scan at tau = 0.125 (negative result, archived) |
+| `c7_controlled_6seeds.txt` | 6 | Per-seed error-width exponents for the three controlled spectra |
+| `c7_exact_reference.txt` | 6 | Exact truncation reference for those operators |
+| `estimator_validation.txt` | 9 | Fitted parameters and rank predictions per snapshot count |
+| `ks_slope_window_scan.txt` | 2 | Slope of the Kuramoto-Sivashinsky curve as a function of the fitting window |
+| `real_l96_width.txt` | 6 | Lorenz-96 width scan, measured |
+| `v15_alpha_res.txt` | 7 | Resonance exponent on the generalized cat maps |
+| `v22_alignment2.txt` | 8 | Per-rank tail ratios for the alignment condition |
+| `v26_branch_vs_n.txt` | 10 | Which branch fits better, as a function of Toeplitz order |
+| `v26_toeplitz.txt` | 10 | Toeplitz spectra and their fitted exponents |
+| `v27_per_r_alignment.txt` | 8 | Tail ratios at fixed ranks |
+| `width_law_v6_summary.txt` | 6 | Summary of the width scans |
+| `z1_exponent_recomputed.txt` | 1, 4 | Rank-law exponents recomputed from spectra |
 | `tableS2_closed_form_bound.txt` | — | Closed form against enumeration over the verification grid |
 | `tableS3_clean_pde.txt` | — | Controlled-PDE exponents |
 
 ## The figure code
 
-| Script | Produces | Reads |
-|---|---|---|
-| `build_v22_figures.py` | Fig. 1 (rank-dimension law), Fig. 4 (rank laws and ceilings), Fig. 9 (estimator validation) | `c7_exact_reference.json`, `c7_controlled_6seeds.json`, `estimator_validation.json`, `ks_slope_window_scan.json`, `width_law_v6_summary.json`, `z1_exponent_recomputed.json` |
-| `compose_fig2.py` | Fig. 2 (measured rank-accuracy curve) | `path2_ks_turb.npz` |
-| `v22_fig1c.py` | Fig. 1c (saturation panel) | `z1_exponent_recomputed.json` |
-| `v30_new_figures.py` | Fig. 5 (diagnostics), Fig. 7 (two exponents), Fig. 8 (alignment), Fig. 10 (branch fold) | `v15_alpha_res.json`, `v22_alignment2.json`, `v26_branch_vs_n.json`, `v26_toeplitz.json`, `v27_per_r_alignment.json` |
-| `build_v6_figures.py` | Fig. 6 (controlled operators) and the archived width panels | `real_l96_width.json`, `width_law_v6_summary.json` |
-| `v28_graphabs4.py` | the graphical abstract | — |
+| Script | Produces |
+|---|---|
+| `build_v22_figures.py` | Fig. 1 (rank-dimension law), Fig. 4 (rank laws and ceilings), Fig. 9 (estimator validation) |
+| `compose_fig2.py` | Fig. 2 (measured rank-accuracy curve) |
+| `v22_fig1c.py` | Fig. 1c (saturation panel) |
+| `v30_new_figures.py` | Fig. 5 (diagnostics), Fig. 7 (two exponents), Fig. 8 (alignment), Fig. 10 (branch fold) |
+| `build_v6_figures.py` | Fig. 6 (controlled operators) and the archived width panels |
+| `v28_graphabs4.py` | the graphical abstract |
+
+The plotting scripts were written against the intermediate JSON artifacts of the analysis
+rather than against the tab-separated files in `data/figure_data/`. The tab-separated
+files are the figure data and are sufficient to reproduce every plotted quantity; the
+plotting scripts are included for reference and would need their loaders pointed at those
+files to run as they stand.
 
 ## The experiment code
 
 `code/experiments/` holds 75 scripts, written in the order the analysis was carried out.
-They are organised by the artifact each produces and are not a single pipeline. The main
+They are organised by the result each produces and are not a single pipeline. The main
 groups are:
 
 **Theory and classification.** `v16_theory2.py` verifies the closed form against direct
@@ -142,64 +130,40 @@ four methods that share no assumption.
 sea-surface temperature fields. `v18_verify2.py` performs the pre-registered prediction
 and its verification and records the noise floor of the observational spectra.
 
-**Width and estimator experiments.** `l96_width_v6.py` and `ks_width_v6_fixed.py` run the
-width scans; `estimator_validation.py` produces the estimator results.
+**Width and estimator experiments.** `l96_width_v6.py`, `real_l96_width.py` and
+`ks_width_v6_fixed.py` run the width scans; `estimator_validation.py` produces the
+estimator results.
 
 **Conventions and conditioning.** `v20_checkD2.py` establishes that the measured class
 flips with the norm; `v24_condition.py` measures the coupling between invariance defect
 and conditioning.
 
-**Algebraic branch and the exponent separation.** `v11_algebraic_branch.py` instantiates
-the algebraic branch on a controlled random field; `v15_alpha_res.py` and
-`v15_alpha_res_analytic.py` compute the resonance exponent on the generalized cat maps.
-
-## Rebuilding the manuscript
-
-```bash
-python code/build/make_manuscript_final_jcp.py
-```
-
-Every number in the text is read from `data/artifacts/`; nothing is typed by hand. The
-generator also embeds the ten figures from `figures/`.
-
-## Checkers
-
-| Script | What it checks |
-|---|---|
-| `check_structure.py` | Section completeness and ordering |
-| `check_numbering_order.py` | Monotonicity and continuity of figures, tables, equations and references |
-| `check_table_citations.py` | That every table is cited and interpreted in the text |
-| `check_figure_assets.py` | That every embedded image is referenced and none is orphaned |
-| `check_ten_dimensions.py` | Ten independent consistency dimensions over the compiled document |
-| `check_language.py` | Over-long sentences, loose phrasing, passive density |
-| `check_references_crossref.py` | Resolves every DOI through the Crossref API and compares titles |
-| `check_arxiv_entries.py` | Verifies every arXiv identifier against arxiv.org |
-| `audit_numbers.py` | That all 34 quantitative claims in the text agree with the stored artifacts |
+**Algebraic branch and the exponent separation.** `v11_algebraic_branch.py` and
+`v11_algebraic_branch_figure.py` instantiate the algebraic branch on a controlled random
+field; `v15_alpha_res.py` and `v15_alpha_res_analytic.py` compute the resonance exponent
+on the generalized cat maps; `v22_alignment_condition.py`, `v26_toeplitz.py`,
+`v26_branch_vs_n.py` and `v27_per_rank_alignment.py` produce the alignment and branch
+measurements.
 
 ## What was checked, and what was found
 
 Every DOI in the reference list was resolved through the Crossref API, and every arXiv
-identifier was checked against arxiv.org. The reference list now holds 33 entries, all of
-them cited in the text. Three errors were corrected during the final pass: the Benettin,
+identifier was checked against arxiv.org. The reference list holds 33 entries, all of them
+cited in the text. Three errors were corrected during the final pass: the Benettin,
 Galgani, Giorgilli and Strelcyn entry carried a title that does not exist and a page range
-belonging to two separate papers; the Ledrappier and Young entry was missing its Part II
-designation; and two DOIs pointed at unrelated papers.
+belonging to two separate papers, the Ledrappier and Young entry was missing its Part II
+designation, and two DOIs pointed at unrelated papers.
 
 The algebraic exponent of Eq. (2) was wrong in an earlier version: it read
 `eps^{-1/beta}` where the paper's own random-field instantiation and its own tabulated
-predictions require `eps^{-1/(beta - 1/2)}`. The discrepancy was caught by comparing
-Eq. (2) against `data/artifacts/v11_algebraic_branch.json`, whose `theory` field equals
-`1/(p - 1/2)` to four digits.
-
-A preprocessing step that reorganised the back matter once deleted two figure images,
-because it treated image-only paragraphs as empty and discarded them. The loss was found
-by comparing the number of embedded media files against the number of referenced ones, and
-is now covered by `check_figure_assets.py`.
+predictions require `eps^{-1/(beta - 1/2)}`. The discrepancy was found by comparing
+Eq. (2) against the stored artifact of the algebraic-branch run, whose predicted exponents
+equal `1/(p - 1/2)` to four digits.
 
 An earlier version of this work asserted that the width-accuracy branch had been
 established. On re-examination it had not: the measured exponent moves the wrong way as
 the spectral exponent falls. The width branch is reported as not established, and
-`data/artifacts/` retains the measurements that forced that conclusion rather than only
+`data/figure_data/` retains the measurements that forced that conclusion rather than only
 the ones that supported the earlier claim.
 
 ## Environment
