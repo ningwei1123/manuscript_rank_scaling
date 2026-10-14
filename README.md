@@ -4,6 +4,23 @@ Code, figures and figure data for a paper submitted to the *Journal of Computati
 Physics*. The repository is self-contained: every script resolves its inputs relative to
 the repository root, so it can be cloned anywhere and run.
 
+## Version correspondence
+
+The repository is archived on Zenodo and tagged to match the submitted manuscript. The
+manuscript Data-availability statement cites the version below that reproduces *every*
+quantitative claim in the text.
+
+| Repository tag | Manuscript | Zenodo DOI | What it archives |
+|---|---|---|---|
+| `v1.0.0` | JCP submission (first deposit) | [10.5281/zenodo.23334340](https://doi.org/10.5281/zenodo.23334340) | code, data artifacts and figures at the v1.0.0 snapshot |
+| `v1.1.0` | JCP manuscript **v48** (all numbers) | [10.5281/zenodo.23354867](https://doi.org/10.5281/zenodo.23354867) | the code, data artifacts and figures that regenerate every number in v48 |
+
+`v1.1.0` is the version referenced by the manuscript. Cloning the tag and running
+`python code/build/make_manuscript_final_jcp.py` rebuilds the manuscript from the archived
+artifacts; every number is read from `data/artifacts/`, nothing is typed by hand. The
+concept DOI [10.5281/zenodo.23334339](https://doi.org/10.5281/zenodo.23334339) always
+resolves to the latest published version.
+
 ## What the paper claims
 
 Practitioners choose the size of a reduced-order or operator-learning model from the decay
