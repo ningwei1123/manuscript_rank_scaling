@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 
 NUM = r"E:\nature投稿\探索1\数值验证"
-FIGDIR = os.path.join(NUM, "figures")
 rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "DejaVu Serif"],
                  "mathtext.fontset": "stix", "font.size": 8.5})
 

@@ -13,9 +13,6 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from PIL import Image
 
-ROOT = r"E:\nature投稿\探索1\数值验证"
-ART = r"E:\deepseekworkspace\ncs_v6"
-FIGDIR = os.path.join(ROOT, "figures")
 load = lambda p: json.load(open(p, encoding="utf-8"))
 S = load(os.path.join(ROOT, "width_law_v6_summary.json"))
 L96 = S["lorenz96_width_law"]

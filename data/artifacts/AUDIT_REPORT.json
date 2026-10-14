@@ -1,0 +1,131 @@
+{
+  "audit_date_utc": "2026-10-11",
+  "verified_correct": [
+    "All stored Kaplan-Yorke dimensions (Lorenz63 2.0608; KS N32 8.9711; KS N64 8.8853; L96 N20/30/40 13.457/20.253/26.865) reproduce exactly from the stored Lyapunov spectra.",
+    "KS Lyapunov spectrum is validated end-to-end: the sum of all 32 exponents equals the analytic Jacobian trace sum(k^2-k^4) = -2585.5358 to a relative error of 2.8e-7. An independent reimplementation reproduces lambda_1 = 1.935 and the same trace.",
+    "The KS rank law holds quantitatively: the measured rank-accuracy curve for KS has a logarithmic slope of 1.398 against the predicted 1/alpha = 1.406 (1% agreement), and the logarithmic fit beats the power-law fit (R2 0.979 vs 0.971).",
+    "Lorenz63 D_KY = 2.0608 matches the literature value 2.062.",
+    "The r_data ceiling is internally consistent with the implemented definition r_data = d_eff + (1/2 alpha) log M."
+  ],
+  "defects_confirmed": [
+    {
+      "id": "D1",
+      "severity": "fatal for one experiment",
+      "claim": "Real-system Lorenz-96 width scan supports the width law / shows the no-gap curse.",
+      "evidence": "real_l96_sweep_t01.json: every DeepONet (W=8..64) has test MSE 6.6-6.9, i.e. 6.6-6.9x WORSE than the trivial predictor that outputs the training mean (MSE = 1.0001). A plain ridge linear map reaches MSE = 0.163. The network is not learning the flow map at all.",
+      "action": "Remove the claim. Report as a failed experiment; re-run before any use."
+    },
+    {
+      "id": "D2",
+      "severity": "major",
+      "claim": "Eq. (2): r = d_eff + (1/(2 alpha)) log(1/eps).",
+      "evidence": "Measured KS log slope is 1.398, equal to 1/alpha = 1.406, not 1/(2 alpha) = 0.703. The factor 1/2 belongs to the energy convention; the paper uses RMSE.",
+      "action": "Use r = d_eff + (1/alpha) log(1/eps) and state the norm convention."
+    },
+    {
+      "id": "D3",
+      "severity": "major",
+      "claim": "Delta = lambda_k - lambda_{k+1} (KY index) as defined in Online Methods, while the code computes Delta = lambda_1 - lambda_2.",
+      "evidence": "For Lorenz63 the two differ by 16x (14.55 vs 0.888); for KS N32 by 2.3x (0.2145 vs 0.0940). The manuscript reports 0.89 for Lorenz63, i.e. the top gap, contradicting its own definition.",
+      "action": "Fix the definition, recompute the table column, and abandon 'alpha ~ Delta' as unsupported: observed ratios are 3.3x (KS), 7.6x (KS top-gap) and 10x (Lorenz EDMD gap 0.0836 vs Benettin top gap 0.888)."
+    },
+    {
+      "id": "D4",
+      "severity": "major",
+      "claim": "Lorenz-96 lies in the algebraic (Sobolev) regime with beta ~ 0.5.",
+      "evidence": "The stationary ensemble spectrum of the N=40 flow map is nearly FLAT: sigma_min/sigma_max = 0.412, sigma_1/sigma_2 = 1.007. It needs rank 20 for 90% energy and rank 39 for 99% - a hard rank cap at n_state = 40, not a power law. The exponential fit (R2 0.9840) actually beats the power-law fit (R2 0.9745).",
+      "action": "Do not call it algebraic. Report it as a third, rank-capped case that the two-regime dichotomy does not cover."
+    },
+    {
+      "id": "D5",
+      "severity": "major",
+      "claim": "2D Navier-Stokes (N=128) supports decoupling from the ambient dimension.",
+      "evidence": "b3_rank.json builds the POD from M = 130 snapshots for n_state = 16384. Any covariance estimate has rank <= M-1 = 129, so r_99 = 10, r90 = 2 and alpha = 0.0924 describe the sampling, not the attractor. The three resolutions give non-monotone r_99 = 10/11/10 - as expected for a sampling artefact.",
+      "action": "Remove as evidence for decoupling; keep only as a demonstration of the finite-sample ceiling r_data, or regenerate with >= 1e3-1e4 snapshots."
+    },
+    {
+      "id": "D6",
+      "severity": "numeric inconsistency",
+      "claim": "Alpha for 2D-NS N=128 is 0.087.",
+      "evidence": "b3_rank.json stores 0.09237 for 2D-NS(N=128); 0.08685 belongs to 2D-NS(N=64). The manuscript took the N=64 value with the N=128 label.",
+      "action": "Use 0.0924 for N=128 (or label it N=64)."
+    },
+    {
+      "id": "D7",
+      "severity": "numeric inconsistency",
+      "claim": "KS r_99 = 4 is robust across N.",
+      "evidence": "path3_empirical.json stores r_99 = 4 (N=32), 3 (N=64), 4 (N=128); the text reports only the N=32 value and the audit document says '4/3/4'.",
+      "action": "Report the range 3-4 and the spread."
+    },
+    {
+      "id": "D8",
+      "severity": "numeric inconsistency",
+      "claim": "Controlled-operator width law 'confirms the predicted exponent'.",
+      "evidence": "c7_l4_v2.json: measured slopes -0.634, -0.773, -0.940 against true betas 1.00, 0.75, 0.60 (errors 37%, -3%, 57%), with an error floor of 0.09-0.11 that the fit ignores; W*(eps) is extrapolated from the power fit, not measured.",
+      "action": "Report the slope errors and the floor; downgrade 'confirm' to 'consistent in direction only'."
+    },
+    {
+      "id": "D9",
+      "severity": "logic",
+      "claim": "'must exceed 0.5 for a trace-class covariance'.",
+      "evidence": "sum sigma_k^2 < inf needs beta > 1/2 (Hilbert-Schmidt); trace class needs beta > 1. The paper's operators are Hilbert-Schmidt, so 1/2 is the relevant threshold and the sentence mislabels it.",
+      "action": "Correct the terminology."
+    },
+    {
+      "id": "D10",
+      "severity": "presentation",
+      "claim": "Fig. 1 schematic is labelled 'Koopman / observable operator'.",
+      "evidence": "make_fig1_concept.py: alpha=0.9 and beta=0.6 are hard-coded; the panel title says 'Koopman / observable operator', which conflates exactly the two objects the paper's central clarification separates.",
+      "action": "Relabel to 'covariance (observable-transfer) operator' and state in the caption that the curves are illustrative."
+    },
+    {
+      "id": "D11",
+      "severity": "presentation",
+      "claim": "Figure 6 (proposed v4) shows rank decoupling from ambient dimension.",
+      "evidence": "Its Lorenz-96 points are r_99 = 20/29/39 at n = 20/30/40 (i.e. r_99 ~ n, the opposite of decoupling) and its 2D-NS points are the M=130 sampling artefact.",
+      "action": "Do not use this figure as decoupling evidence."
+    }
+  ],
+  "authoritative_values": {
+    "Lorenz63": {
+      "D_KY": 2.0608,
+      "lam": [
+        0.8867,
+        -0.00158,
+        -14.5516
+      ],
+      "gap_top": 0.8882,
+      "gap_KY": 14.5501
+    },
+    "KS_N32": {
+      "D_KY": 8.9711,
+      "alpha": 0.71114,
+      "alpha_R2": 0.994,
+      "gap_top": 0.094,
+      "gap_KY": 0.2145,
+      "r99": 4,
+      "r_data": 17.94,
+      "measured_log_slope": 1.398,
+      "predicted_1_over_alpha": 1.406
+    },
+    "KS_N64": {
+      "D_KY": 8.8853,
+      "gap_top": 0.0474,
+      "gap_KY": 0.2188,
+      "r99": 3
+    },
+    "L96_N40": {
+      "D_KY": 26.8645,
+      "spectrum": "near-flat, sigma_min/sigma_max = 0.412",
+      "rank_90pct": 20,
+      "rank_99pct": 39,
+      "n_state": 40
+    },
+    "NS_2D_N128": {
+      "alpha": 0.09237,
+      "r99": 10,
+      "M_snapshots": 130,
+      "n_state": 16384
+    }
+  }
+}

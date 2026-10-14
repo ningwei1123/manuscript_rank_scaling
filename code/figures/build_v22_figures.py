@@ -14,6 +14,11 @@ Fig S1 Lorenz-96 near-flat spectrum + finite-sample ceiling
 Fig S2 the failed first width scan
 Fig S3 KS width scans
 """
+import os as _os
+REPO = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+ART = _os.path.join(REPO, "data", "artifacts")
+FIGDIR = _os.path.join(REPO, "figures")
+FDATA = _os.path.join(REPO, "data", "figure_data")
 import json, os
 import numpy as np
 import matplotlib
@@ -23,9 +28,8 @@ from matplotlib import rcParams
 from scipy.linalg import svd as csvd
 
 NUM = r"E:\nature投稿\探索1\数值验证"
-V7 = r"E:\deepseekworkspace\experiments_v7"
-V6 = r"E:\deepseekworkspace\experiments_v6"
-FIGDIR = os.path.join(NUM, "figures")
+V7 = r"" + ART + ""
+V6 = r"" + ART + ""
 load = lambda p: json.load(open(p, encoding="utf-8"))
 rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "DejaVu Serif"],
                  "mathtext.fontset": "stix", "font.size": 8.5, "axes.linewidth": 0.8,

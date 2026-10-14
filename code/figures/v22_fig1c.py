@@ -6,15 +6,19 @@
   · 各自的实测 r(ε) 与 Eq.(3) 闭式预测（虚线）
   · 直观显示 αn 小时 r 迅速到达 n 上界（看似"封顶"）
 """
+import os as _os
+REPO = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+ART = _os.path.join(REPO, "data", "artifacts")
+FIGDIR = _os.path.join(REPO, "figures")
+FDATA = _os.path.join(REPO, "data", "figure_data")
 import io, os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-FIGDIR = r"E:\deepseekworkspace\ncs_v6\figures"
 if not os.path.isdir(FIGDIR):
-    for cand in (r"E:\deepseekworkspace\experiments_v7\figures",
+    for cand in (r"" + ART + os.sep + "figures",
                  r"E:\deepseekworkspace\ncs_v6"):
         if os.path.isdir(cand):
             FIGDIR = cand; break

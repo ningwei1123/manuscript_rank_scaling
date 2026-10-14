@@ -1,0 +1,18 @@
+# Supplementary Table 3: the criterion on clean benchmark PDEs whose spectral
+# exponent is a known input rather than a fitted quantity.
+# 1D advection u_t + beta u_x = 0 on a periodic domain, N = 1024, exact spectral
+# integration, 1200 snapshots. Initial Fourier amplitudes follow k^{-p}, so the
+# covariance spectrum is k^{-2p} and the spectral exponent is 2p.
+# 'agree' is the match between the class predicted from the spectrum and the class
+# measured from the rank-accuracy curve.
+equation	parameter	beta_fitted	spec_class	rank_class	agree	rank_exponent	theory
+advection	p=0.5	0.9580	ALG	EXP	no	0.1652	not applicable
+advection	p=1.0	1.9160	ALG	ALG	yes	0.5294	2.0000
+advection	p=1.5	2.8740	ALG	ALG	yes	0.4301	1.0000
+advection	p=2.0	3.8320	ALG	ALG	yes	0.3149	0.6667
+advection	p=3.0	5.7480	ALG	ALG	yes	0.2040	0.4000
+advection	p=4.0	7.6640	ALG	ALG	yes	0.1384	0.2857
+burgers	nu=0.01	12.2661	EXP	EXP	yes	0.2242	not stated
+burgers	nu=0.05	13.2336	EXP	EXP	yes	0.2290	not stated
+burgers	nu=0.1	13.1162	EXP	EXP	yes	0.2212	not stated
+burgers	nu=0.2	13.1930	EXP	EXP	yes	0.2028	not stated
